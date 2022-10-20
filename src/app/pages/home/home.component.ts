@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PeliculasService } from '../../services/peliculas.service';
 import { Movie } from 'src/app/interfaces/cartelera-response';
 
@@ -11,6 +10,24 @@ import { Movie } from 'src/app/interfaces/cartelera-response';
 export class HomeComponent implements OnInit {
 
   public movies: Movie[] = [];
+  public moviesSlideShow: Movie[] = [];
+
+  @HostListener( 'window:scroll', ['$event'] )
+  onScroll() {
+    const posicion = (document.documentElement.scrollTop || document.body.scrollTop) + 1300;
+
+    const max = (document.documentElement.scrollHeight || document.body.scrollHeight)
+
+    if( posicion > max ) {
+      this.peliculasSvc.getCartelera().subscribe(res => {
+        this.movies.push(...res.results)
+      })
+      
+    }
+
+    
+    
+  }
 
   constructor( private readonly peliculasSvc:PeliculasService ) { }
 
@@ -24,6 +41,7 @@ export class HomeComponent implements OnInit {
     this.peliculasSvc.getCartelera().subscribe(res => {
       // console.log(res.results);
       this.movies = res.results
+      this.moviesSlideShow = res.results;
       
     })
   }
