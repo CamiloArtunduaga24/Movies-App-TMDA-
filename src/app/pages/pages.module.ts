@@ -11,7 +11,7 @@ import { ComponentsModule } from '../components/components.module';
   declarations: [
     HomeComponent,
     PeliculaComponent,
-    BuscarComponent
+    BuscarComponent,
   ],
   imports: [
     CommonModule,
