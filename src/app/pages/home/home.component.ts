@@ -19,8 +19,10 @@ export class HomeComponent implements OnInit {
     const max = (document.documentElement.scrollHeight || document.body.scrollHeight)
 
     if( posicion > max ) {
-      this.peliculasSvc.getCartelera().subscribe(res => {
-        this.movies.push(...res.results)
+
+      if( this.peliculasSvc.cargando) { return; }
+      this.peliculasSvc.getCartelera().subscribe(movies => {
+        this.movies.push(...movies)
       })
       
     }
@@ -38,10 +40,10 @@ export class HomeComponent implements OnInit {
   }
 
   getCartelera() {
-    this.peliculasSvc.getCartelera().subscribe(res => {
+    this.peliculasSvc.getCartelera().subscribe(movies => {
       // console.log(res.results);
-      this.movies = res.results
-      this.moviesSlideShow = res.results;
+      this.movies = movies
+      this.moviesSlideShow = movies;
       
     })
   }
