@@ -17,7 +17,7 @@ const routes: Routes = [
     component: PeliculaComponent
   },
   {
-    path: 'buscar/:text',
+    path: 'buscar/:texto',
     component: BuscarComponent
   },
   {
