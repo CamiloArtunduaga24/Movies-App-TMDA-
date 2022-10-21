@@ -26,7 +26,7 @@ export class BuscarComponent implements OnInit {
       this.peliculasSvc.buscarPeliculas( params.texto ).subscribe( movies => {
         this.movies = movies
         
-      } )
+      });
       
     } )
   }
