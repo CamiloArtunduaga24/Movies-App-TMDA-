@@ -6,6 +6,8 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-poster-grid.component';
 import { RatingModule } from 'ng-starrating';
 import { PipesModule } from '../pipes/pipes.module';
+import { NetworkConnectionStatusComponent } from './network-connection-status/network-connection-status.component';
+import { CastSlideShowComponent } from './cast-slide-show/cast-slide-show.component';
 
 
 
@@ -13,7 +15,9 @@ import { PipesModule } from '../pipes/pipes.module';
   declarations: [
     NavbarComponent,
     SlideshowComponent,
-    PeliculasPosterGridComponent
+    PeliculasPosterGridComponent,
+    NetworkConnectionStatusComponent,
+    CastSlideShowComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,9 @@ import { PipesModule } from '../pipes/pipes.module';
   exports: [
     NavbarComponent,
     SlideshowComponent,
-    PeliculasPosterGridComponent
+    CastSlideShowComponent,
+    PeliculasPosterGridComponent,
+    NetworkConnectionStatusComponent
   ]
 })
 export class ComponentsModule { }
